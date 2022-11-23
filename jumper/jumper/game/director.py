@@ -103,18 +103,25 @@ class Director:
 
         #_draw_jumper
         #
-        self._puzzle._draw_word_selected()
+        # self._puzzle._draw_word_selected()
 
         #end game
         # if self._jumper._parachute   #if len(_parachute[0]) > 1:
 
+        
         if self._jumper.has_parachute() == False:
             self._jumper.parachute_gone()
-            self._is_playing = False
+            self._jumper.draw_jumper()
+            self._is_playing = self._jumper.has_parachute()
 
-        elif self._puzzle.can_keep_guessing() == False:
-            print('YAY, you own!')
-            self._is_playing = False
+
+        # if self._jumper.has_parachute() == False:
+        #     self._jumper.parachute_gone()
+        #     self._is_playing = False
+
+        # elif self._puzzle.can_keep_guessing() == False:
+        #     print('YAY, you own!')
+        #     self._is_playing = False
 
 
 

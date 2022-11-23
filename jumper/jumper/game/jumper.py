@@ -36,7 +36,7 @@ class Jumper:
 
     def has_parachute(self):
         #checks if parachute is left, if none game ends
-        if len(self._parachute) > 0:
+        if len(self._parachute) == 0:
             return False
         else:
             return True
@@ -44,7 +44,7 @@ class Jumper:
     def parachute_gone(self):
         #changes head of jumper from O to x when game ends due to no parachute left. 
         # return self._jumper[0].replace('O', 'X') #how does it know when to run this part?
-        self._jumper[0] = 'X'
+        self._jumper[0] = '  X'
 
 
 
