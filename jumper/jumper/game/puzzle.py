@@ -32,9 +32,16 @@ class Puzzle:
         # self._index_guess = self._word_selected.index(self._word_selected)
         # self._index_guess = 0
 
+#    def _draw_word_selected(self):
+#        for i in self._word_guess:
+#            self._terminal_service.write_text(i)
+
     def _draw_word_selected(self):
-        for i in self._word_guess:
-            self._terminal_service.write_text(i)
+        _guess = ''
+        for space in self._word_guess:
+            _guess += space
+        self._terminal_service.write_text(_guess)
+
             
 
     # draws an _ for each letter in _word_selected based on the index length

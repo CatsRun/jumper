@@ -106,21 +106,11 @@ class Director:
 
                 
     def _do_outputs(self):
-        """Provides a hint for the seeker to use.
+        """Displays end of game
 
         Args:
-            self (Director): An instance of Director.
+            
         """
-        # hint = self._hider.get_hint()
-        # self._terminal_service.write_text(hint)
-        # if self._hider.is_found():
-        #     self._is_playing = False
-
-        #_draw_jumper
-        #
-        # self._puzzle._draw_word_selected()
-
-
 
         #ends game if parachute is gone
         if self._jumper.has_parachute() == False:
@@ -129,8 +119,8 @@ class Director:
             self._is_playing = self._jumper.has_parachute()
 
         #end game if puzzle is solved
-        elif self._puzzle.can_keep_guessing() == False:
-            print('YAY, you won!')
+        elif self._puzzle.can_keep_guessing() == False:            
+            self._terminal_service.write_text(f'YAY, you landed in {self._puzzle._word_selected.capitalize()}!')
             self._is_playing = False
 
 
