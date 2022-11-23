@@ -43,9 +43,7 @@ class Puzzle:
     #         i += '_' * (len(self._word_selected) -1)
     #         self._terminal_service.write_text(i)
             
-    #         # ***********remove before 
-            # print(self._word_selected)
-    
+   
 
 
     def _process_guess(self, _letter_guessed):
