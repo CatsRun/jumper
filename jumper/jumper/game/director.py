@@ -26,6 +26,7 @@ class Director:
         self._is_playing = True
         self._jumper = Jumper()
         self._terminal_service = TerminalService()
+        # self._letter_guessed = ''
         
         
     def start_game(self):
@@ -49,10 +50,13 @@ class Director:
 
         # self._puzzle_
         # self._guess_letter = "Guess a letter [a-z]: "
-
+        print(self._puzzle._word_selected) #********remove
         self._puzzle._draw_word_selected()
         self._jumper.draw_jumper()
         self._letter_guessed = self._terminal_service.read_guess('Guess a letter [a-z]: ')
+        
+        # self._puzzle._check_guess(self._letter_guessed) #string is not callable
+
         
         
     def _do_updates(self):
@@ -61,9 +65,11 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        # self._hider.watch_seeker(self._seeker)
+       
         # #replaces hint _ with guessed letter
-        # if self._check_word(self._word) is True:
+        self._puzzle._process_guess(self._letter_guessed) #*******
+
+        # if self.puzzle._check_word(self._word) is True:
         #     self._index_guess = self._word.index(self._guess) #finds the index of _guess
         #     self._hint[self._index_guess] = self._guess #replaces _ with _guess
 
@@ -76,16 +82,25 @@ class Director:
         # self._puzzle._check_word()
         # self._puzzle._word_guess() #checks if all letters were guessed
         
-        # self._puzzle._process_guess(self._letter_guessed)
-        # self._puzzle._process_guess(self._letter_guessed)
+         
         
-        self._puzzle._process_guess(self._letter_guessed)
-
-        if self._letter_guessed in self._puzzle._word_selected:
+        #if guess is right, add leter, else remove parachute piece
+        if self._puzzle._process_guess(self._letter_guessed) == True:
             self._jumper.draw_jumper()
 
         else:
             self._jumper.remove_chute_piece()
+
+
+
+
+        # # if self._letter_guessed in self._puzzle._word_selected:
+        # if self._puzzle._word_selected == True:
+            
+        #     self._jumper.draw_jumper()
+
+        # else:
+        #     self._jumper.remove_chute_piece()
 
                 
 
@@ -105,23 +120,18 @@ class Director:
         #
         # self._puzzle._draw_word_selected()
 
-        #end game
-        # if self._jumper._parachute   #if len(_parachute[0]) > 1:
 
-        
+
+        #ends game if parachute is gone
         if self._jumper.has_parachute() == False:
             self._jumper.parachute_gone()
             self._jumper.draw_jumper()
             self._is_playing = self._jumper.has_parachute()
 
-
-        # if self._jumper.has_parachute() == False:
-        #     self._jumper.parachute_gone()
-        #     self._is_playing = False
-
-        # elif self._puzzle.can_keep_guessing() == False:
-        #     print('YAY, you own!')
-        #     self._is_playing = False
+        #end game if puzzle is solved
+        elif self._puzzle.can_keep_guessing() == False:
+            print('YAY, you won!')
+            self._is_playing = False
 
 
 

@@ -18,10 +18,11 @@ class Jumper:
         Args:
             self (Seeker): An instance of Seeker.
         """
-        self._location = 0  
+
         self._parachute = [' ___', '/___\ ', '\   /', ' \ /' ]
         self._jumper = ['  O', ' /|\ ', ' / \ ', '', '^^^^^^^'  ]
         self._terminal_service = TerminalService()
+
 
     def draw_jumper(self):
         for i in self._parachute:
@@ -30,9 +31,11 @@ class Jumper:
         for i in self._jumper:
             self._terminal_service.write_text(i)
 
+
     def remove_chute_piece(self):
         #remove parachute piece
         self._parachute.pop(0)
+
 
     def has_parachute(self):
         #checks if parachute is left, if none game ends
@@ -41,9 +44,9 @@ class Jumper:
         else:
             return True
 
+
     def parachute_gone(self):
         #changes head of jumper from O to x when game ends due to no parachute left. 
-        # return self._jumper[0].replace('O', 'X') #how does it know when to run this part?
         self._jumper[0] = '  X'
 
 
