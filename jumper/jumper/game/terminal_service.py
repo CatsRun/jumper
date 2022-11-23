@@ -15,7 +15,6 @@ class TerminalService:
         Returns:
             string: The user's input as text.
         """
-
         
         return input(prompt)
 

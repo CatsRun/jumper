@@ -1,7 +1,6 @@
-# Seeker
-Experience the thrill of the chase! <i>Seeker</i> might seem easy but even the best get lost 
-from time to time. The rules are simple. The seeker guesses the hider's location and the hider 
-provides a hint - that's confidence! Guessing continues until the hider is found.
+# Jumper
+Are you brave enough to jump? <i>jumper</i> is a game where you try to guess a word one letter at a time. If you succeed you win and land 
+at your destination. Every wrong guess removes a piece of your parachute. When the parachute is gone, you fall. Will you land safely?
 
 ---
 ## Getting Started
@@ -15,7 +14,7 @@ You can also run the program from an IDE like Visual Studio Code. Start your IDE
 The project files and folders are organized as follows:
 ```
 root                    (project root folder)
-+-- seeker              (source code for game)
++-- jumper              (source code for game)
   +-- game              (specific classes)
   +-- __main__.py       (program entry point)
 +-- README.md           (general info)
