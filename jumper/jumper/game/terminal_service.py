@@ -19,18 +19,18 @@ class TerminalService:
         
         return input(prompt)
 
-    # def read_number(self, prompt):
-    #     """Gets numerical input from the terminal. Directs the user with the given prompt.
+    def read_guess(self, prompt):
+        """Gets numerical input from the terminal. Directs the user with the given prompt.
 
-    #     Args: 
-    #         self (TerminalService): An instance of TerminalService.
-    #         prompt (string): The prompt to display on the terminal.
+        Args: 
+            self (TerminalService): An instance of TerminalService.
+            prompt (string): The prompt to display on the terminal.
 
-    #     Returns:
-    #         float: The user's input as a number.
-    #     """
-    #     #can add validation that a number is inputed
-    #     return float(input(prompt))
+        Returns:
+            float: The user's input as a number.
+        """
+       
+        return (input(prompt))
         
     def write_text(self, text):
         """Displays the given text on the terminal. 

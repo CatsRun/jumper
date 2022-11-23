@@ -1,4 +1,5 @@
 import random
+from game.terminal_service import TerminalService
 
 class Puzzle:
     """The person hiding from the Seeker. 
@@ -16,14 +17,67 @@ class Puzzle:
         Args:
             self (Hider): An instance of Hider.
         """
-        # self._location = random.randint(1, 1000)
-        # self._distance = [0, 0] # start with two so get_hint always works
 
         self._puzzle_word = ['rome', 'paris', 'berlin', 'dubia']
-        self._hint = '' #add _ for length._puzzle_word
-        self._word = self._puzzle_word[random.randint(0, len(_puzzle_word)-1)] #how to pull a random word from a list
+        self._word_selected = self._puzzle_word[random.randint(0, len(self._puzzle_word)-1)] #how to pull a random word from a list
+        # self._word_guess = ['_'] * len(self._word_selected)
+        self._word_guess = ['_']  
+
         self._check_guess = '' #this is user input. Should it be in a different class?
         self._check_word = len(self._puzzle_word) #is this right? does it pull what the signle word is?
+        self._terminal_service = TerminalService()
+        
+        #how do I get the index if I don't know the letter in puzzle?
+
+        self._index_guess = self._word_selected.index(self._word_selected)
+        
+
+
+    # def _draw_word_selected(self):
+    #     for i in self._word_guess:
+    #         self._terminal_service.write_text(i)
+
+    # draws an _ for each letter in _word_selected based on the index length
+    def _draw_word_selected(self):
+        for i in self._word_guess:
+            i += '_' * (len(self._word_selected) -1)
+            self._terminal_service.write_text(i)
+
+            # ***********remove before 
+            print(self._word_selected)
+    
+
+
+    def _process_guess(self, _letter_guessed):
+        correct_guess = False
+        # loop through word seleceted
+        # for self._guess in self._word_selected:
+        # # check if guess letter = word_seleted[index]
+        #     if self._word_guess == self._word_selected[self._index_guess]:
+        # # set _wordguess[index] = guess_letter
+        #         self._word_guess[self._index_guess] = self._guess
+        # return correct_guess
+
+        # ******* this didnt work. out of range
+        # for i in range(0, len(self._word_selected)):
+        #     if _guess_letter in self._word_selected:
+        #         self._word_guess[i]
+
+        # find i in _word_guess
+        self._word_guess[self._index_guess] = _letter_guessed
+        return correct_guess
+
+
+
+
+#************check this, was added off the other
+    def can_keep_guessing(self):
+        return '_' in self._word_guess
+
+
+
+
+
 
     def _check_word(self):
         """Check to see if there are any more letters to guess
@@ -31,6 +85,14 @@ class Puzzle:
         Args:
             self                
         """
+        # if '_' in self._hint:
+        #     return True
+        # else:
+        #     return False
+        return '_' in self._word_guess
+
+        
+
 
 
     def _check_guess(self):
@@ -48,22 +110,23 @@ class Puzzle:
 
 
         #this checks if _guess in is _word, return True
-        if _guess in self._word:                  
+        if self._guess in self._word_selected:                  
             return True
         else:
             return False
 
 
-    def _check_word(self):
-        """Checks if the word is complete by checking the hint list for underscores. 
-        
-        Args:
-            self
 
-        Return: 
-            True/False
-        """
-        #does hint[] have _ in it?
+    # def _check_word(self):
+    #     """Checks if the word is complete by checking the hint list for underscores. 
+        
+    #     Args:
+    #         self
+
+    #     Return: 
+    #         True/False
+    #     """
+    #     #does hint[] have _ in it?
 
 
     

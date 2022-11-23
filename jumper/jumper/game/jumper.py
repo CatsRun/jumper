@@ -43,26 +43,8 @@ class Jumper:
 
     def parachute_gone(self):
         #changes head of jumper from O to x when game ends due to no parachute left. 
-        return self._jumper[0].replace('O', 'X') #how does it know when to run this part?
+        # return self._jumper[0].replace('O', 'X') #how does it know when to run this part?
+        self._jumper[0] = 'X'
 
 
 
-#     def get_location(self):
-#         """Gets the current location.
-        
-#         Returns  :
-#             number: The current location,
-#         """
-#         return self._location
-
-
-# # 4) Create the move_location(self, location) method. Use the following method comment.
-#     def move_location(self, location):
-#         """Moves to the given location.
-
-#         Args:
-#             self (Seeker): An instance of Seeker.
-#             location (int): The given location.
-#         """
-#         self._location = location
-        
